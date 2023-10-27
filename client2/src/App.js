@@ -1,24 +1,41 @@
-import logo from './logo.svg';
-import './App.css';
-
-function Detail() {
-  return(
-    <div>
-      <h1>Title</h1>
-      <p>Consequat amet mollit in culpa ullamco dolore. Eu tempor officia consectetur dolore dolor quis. Occaecat reprehenderit officia laborum reprehenderit commodo sint enim minim ullamco laboris veniam ipsum commodo. Nisi nisi reprehenderit voluptate in magna dolore cillum dolore consequat duis.</p>
-    </div>
-  )
-}
+import "./App.css";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { DefaultLayout } from "./component/Layout";
+import Header from "./component/Layout/Header";
+import Detail from "./component/pages/Detail";
+import List from "./component/pages/List";
+import News from "./component/pages/News";
+import Login from './component/pages/Login';
 
 function App() {
   return (
-    <div className="App">
-      <Detail></Detail>
-      <Detail></Detail>
-      <Detail></Detail>
-      <Detail></Detail>
-    </div>
-    
+    <Router>
+      <Routes>
+        <Route path="/" element={
+          <DefaultLayout>
+            <List />
+          </DefaultLayout>
+        } />
+
+        <Route path="/detail/:id" element={
+          <DefaultLayout>
+            <Detail />
+        </DefaultLayout>
+        } />
+
+        <Route path="/news" element={
+          <DefaultLayout>
+          <News />
+        </DefaultLayout>
+        } />
+
+        <Route path="/login" element={
+          <DefaultLayout>
+          <Login />
+        </DefaultLayout>
+        } />
+      </Routes>
+    </Router>
   );
 }
 
